@@ -1,0 +1,1 @@
+The includes folder will include any reusable templates such as Nav bar and many others

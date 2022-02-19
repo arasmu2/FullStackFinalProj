@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "asyn": "^0.0.1",
+    "async": "^3.2.3",
+    "mongoose": "^6.2.1",
+    "populatedb": "^1.0.0"
+  }
+}

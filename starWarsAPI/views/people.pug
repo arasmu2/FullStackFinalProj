@@ -1,6 +1,7 @@
-extends layout
+include includes/head.pug
+body.bg-image(style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/76.jpg');")
+  include includes/navbar.pug
+  block content
+    h1 Star Wars API
 
-block content
-  h1 Star Wars API
-
-  div There are no people.
+    div There are no people.

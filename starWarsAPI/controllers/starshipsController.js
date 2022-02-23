@@ -7,5 +7,7 @@ exports.index = function(req, res) {
 };
 
 exports.starships = function(req, res, next) {
-    res.render('starships');
+    res.render('lists', {
+        title: 'Starships'
+    });
 };

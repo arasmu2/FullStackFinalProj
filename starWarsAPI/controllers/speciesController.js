@@ -7,5 +7,7 @@ exports.index = function(req, res) {
 };
 
 exports.species = function(req, res, next) {
-    res.render('species');
+    res.render('lists', {
+        title: 'Species'
+    });
 };

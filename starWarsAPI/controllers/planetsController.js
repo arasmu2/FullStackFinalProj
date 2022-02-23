@@ -7,5 +7,7 @@ exports.index = function(req, res) {
 };
 
 exports.planets = function(req, res, next) {
-    res.render('planets');
+    res.render('lists', {
+        title: 'Planets'
+    });
 };

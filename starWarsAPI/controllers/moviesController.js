@@ -7,5 +7,7 @@ exports.index = function(req, res) {
 };
 
 exports.movies = function(req, res, next) {
-    res.render('movies');
+    res.render('lists', {
+        title: 'Movies'
+    });
 };

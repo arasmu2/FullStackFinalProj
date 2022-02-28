@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 var index_controller = require("../controllers/indexController");
 var movies_controller = require("../controllers/moviesController");

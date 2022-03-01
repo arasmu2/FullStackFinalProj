@@ -1,29 +1,53 @@
-const { body,validationResult } = require('express-validator');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-const https = require('https');
-const httpsAgent = new https.Agent({
-  rejectUnauthorized: false
-});
+const { body, validationResult } = require("express-validator");
 
-var async = require('async');
 
-exports.index = function(req, res, next) {
-    var memeData = [];
-    fetch('https://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote', {agent: httpsAgent})
-    .then(result => result.json())
-    .then((output) => {
-        memeData.push(output["content"]);
-        fetch('https://api.imgflip.com/get_memes')
-        .then(result => result.json())
-        .then((output) => {
-            var random = Math.floor(Math.random() * (output["data"]["memes"].length - 1));
-            memeData.push(output["data"]["memes"][random]["url"]);
-            res.render('lists', {
-                title: 'Index',
-                data: memeData
-            });
-        })
-        .catch(err => console.error(err));
-    })
-    .catch(err => console.error(err));
+var async = require("async");
+var axios = require("axios");
+var Parser = require("../public/rndMeme").getInstance();
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+exports.index = async function (req, res) {
+  let response, data, err, img_response, img_url, img_err;
+  // fetch a random quote
+  try {
+    response = await axios.get(
+      "http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote"
+    );
+    data = response.data.content;
+    console.log(data);
+  } catch (error) {
+    console.group("GET quote err");
+    console.error(error);
+    console.groupEnd();
+    err = error;
+  }
+
+  let captions = Parser.parseQuote(data);
+  captions = ["we live in", "a society"];
+
+  try {
+    img_response = await axios.post(
+      "https://api.imgflip.com/caption_image",
+      {},
+      {
+        params: {
+          template_id: "14371066",
+          username: "project_acct",
+          password: "insecurePW",
+          text0: captions[0],
+          text1: captions[1],
+          max_font_size: "30",
+        },
+      }
+    );
+    img_url = img_response.data.data.url;
+    //console.log(img_response.data);
+  } catch (error) {
+    console.group("POST meme err");
+    console.error(error);
+    console.groupEnd();
+    img_err = error;
+  }
+
+  res.render("index", { results: data, err: err, meme: img_url });
 };

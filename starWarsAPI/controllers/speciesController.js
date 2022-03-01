@@ -1,13 +1,21 @@
 const { body,validationResult } = require('express-validator');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 var async = require('async');
 
-exports.index = function(req, res) {
-    res.render('index');
-};
-
 exports.species = function(req, res, next) {
-    res.render('lists', {
-        title: 'Species'
-    });
+    fetch('https://www.swapi.tech/api/species')
+    .then(result => result.json())
+    .then((output) => {
+        var speciesData = [];
+        for (let i = 0; i < output["results"].length; i++)
+        {
+            speciesData.push(output["results"][i]["name"])
+        }
+        res.render('lists', {
+            title: 'Species',
+            data: speciesData
+        });
+    })
+    .catch(err => console.error(err));
 };

@@ -1,11 +1,22 @@
-extends layout
-
+include includes/head.pug
+//- https://stackoverflow.com/questions/42529379/css-background-image-is-rendered-blurred-and-not-entirely/42529554
+body.bg-image(style="background-image: url('/images/pexelsbackgroundv3.jpg'); background-size: 100%;")
+  include includes/navbar.pug
 block content
   h1 Star Wars API
 
   if error
     p Error generating your random Star Wars meme.
   else
-    p Here is your randomly generated Star Wars meme - enjoy :)
+    //- p Here is your randomly generated Star Wars meme - enjoy :)
 
-    div "Randomly generated Star Wars meme will go here"
+    //- div "Randomly generated Star Wars meme will go here"
+    div(class='container')
+      div(class='d-flex mt-5 justify-content-center')
+        div(class='card text-center' style='width: 65vw')
+          div(class='card-header') Your meme, sir/madam
+          //- img(src='https://imgflip.com/s/meme/Star-Wars-Yoda.jpg' class='card-img-top rnd-meme-img')
+          //- img(src='https://imgflip.com/s/meme/These-Arent-The-Droids-You-Were-Looking-For.jpg' class='card-img-top rnd-meme-img')
+          img(src=meme class='card-img-top rnd-meme-img')
+          div(class='card-body')
+            p(class='card-text')=results

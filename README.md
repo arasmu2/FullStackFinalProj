@@ -8,4 +8,6 @@
 
 $ cd starWarsAPI
 
+$ npm install
+
 $ npm start

@@ -12,6 +12,7 @@ exports.species = function(req, res, next) {
         {
             speciesData.push(output["results"][i]["name"])
         }
+        console.log(speciesData);
         res.render('lists', {
             title: 'Species',
             data: speciesData

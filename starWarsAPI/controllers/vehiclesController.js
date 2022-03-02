@@ -12,6 +12,7 @@ exports.vehicles = function(req, res, next) {
         {
             vehicleData.push(output["results"][i]["name"])
         }
+        console.log(vehicleData);
         res.render('lists', {
             title: 'Vehicles',
             data: vehicleData

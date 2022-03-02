@@ -12,6 +12,7 @@ exports.movies = function(req, res, next) {
         {
             movieData.push(output["result"][i]["properties"]["title"])
         }
+        console.log(movieData);
         res.render('lists', {
             title: 'Movies',
             data: movieData

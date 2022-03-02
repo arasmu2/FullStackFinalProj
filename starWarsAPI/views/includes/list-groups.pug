@@ -3,13 +3,14 @@ ol.bg-light.list-group.list-group-horizontal-md(id='order-list')
         li(id='list-items')
             .card(style='width: 18rem;')
                 if title === 'Characters'
-                    a(data-bs-toggle='modal' data-bs-target='#exampleModal')
+                    a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
                         img.card-img-top(src='https://img.pokemondb.net/sprites/home/normal/charmander.png' alt='...')
                     .card-body
                         p.card-text
-                        | #{val}.
+                        | #{val[0]}.
                 else 
-                    a(data-bs-toggle='modal' data-bs-target='#exampleModal')
+                    a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
                         .card-body
                             p.card-text
                             | #{val}.
+        include modal.pug

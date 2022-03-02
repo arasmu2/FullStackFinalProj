@@ -3,11 +3,11 @@ include includes/head.pug
 body.bg-image(style="background-image: url('/images/pexelsbackgroundv3.jpg'); background-size: 100%;")
   include includes/navbar.pug
   block content
-    h1 Star Wars API
+    h1.text-white Star Wars API
 
-    div There are no #{title}.
+    div.text-white There are no #{title}.
   include includes/list-groups.pug
-  include includes/modal.pug
+  //- include includes/modal.pug
 
   //- include includes/modal.pug
     div #{data}

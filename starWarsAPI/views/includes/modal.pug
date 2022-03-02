@@ -1,10 +1,11 @@
-#exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+.modal.fade(id=('exampleModal'+index) tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
   .modal-dialog
     .modal-content
       .modal-header
-        h5#exampleModalLabel.modal-title Modal title
+        h5#exampleModalLabel.modal-title #{val}
         button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
       .modal-body
         | ...
       .modal-footer
         button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+//- https://stackoverflow.com/questions/59230116/how-to-get-modal-dialog-to-send-correct-object-in-pug-iteration

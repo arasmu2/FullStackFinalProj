@@ -12,6 +12,7 @@ exports.people = function(req, res, next) {
         {
             peopleData.push([output[i]["name"], output[i]["image"]])
         }
+        console.log(peopleData);
         res.render('lists', {
             title: 'Characters',
             data: peopleData

@@ -13,6 +13,7 @@ exports.people = function(req, res, next) {
             peopleData.push([output[i]["name"], output[i]["image"]])
         }
         res.render('lists', {
+            image: true,
             title: 'Characters',
             data: peopleData
         });

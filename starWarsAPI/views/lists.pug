@@ -6,7 +6,10 @@ body.bg-image(style="background-image: url('/images/pexelsbackgroundv3.jpg'); ba
     h1 Star Wars API
 
     div There are no #{title}.
-  include includes/list-groups.pug
+  if image 
+    include includes/list-groups-images.pug
+  else 
+    include includes/list-groups.pug
   //- ol.bg-light.list-group.list-group-horizontal-md(id='order-list') 
   //-   each val, index in data
   //-       li(id='list-items')

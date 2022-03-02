@@ -1,6 +1,4 @@
 ol.bg-light.list-group.list-group-horizontal-md(id='order-list') 
-    each val, index in [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30]
+    each val, index in data
         li(id='list-items')
-            a(data-bs-toggle='modal' data-bs-target='#exampleModal')
-                image(alt="delete later" src='https://img.pokemondb.net/sprites/home/normal/charmander.png')
             h1 characters Name #{val}

@@ -8,17 +8,26 @@ li.nav-item > a:hover {
   border-bottom: 1px white solid;
 }
 
+#SW-images {
+  border: 2px solid black;
+}
 /* https://stackoverflow.com/questions/48464444/how-to-display-3-items-per-row-in-flexbox */
-#order-list {
+/* #order-list-container {
+  display: flex;
+  justify-content: space-between;
+} */
+/* #order-list {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-}
-#list-items {
+  justify-content: space-around;
+} */
+/* #list-items {
+  padding: 30px;
   list-style: none;
   flex: 0 0 33.333333%;
   border: 1px solid #f76707;
-}
+} */
 .rnd-meme-img {
   max-height: 40vw;
   object-fit: contain;

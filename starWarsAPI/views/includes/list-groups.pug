@@ -1,16 +1,16 @@
-ol.bg-light.list-group.list-group-horizontal-md(id='order-list') 
+ol.list-group.d-flex(id='order-list-container') 
     each val, index in data
-        li(id='list-items')
+        li.mt-2(id='list-items')
             .card(style='width: 18rem;')
                 if title === 'Characters'
                     a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
-                        img.card-img-top(src='https://img.pokemondb.net/sprites/home/normal/charmander.png' alt='...')
-                    .card-body
+                        img.card-img-top(src=val[1] alt='Star Wars Characters' id="SW-images")
+                    .card-body.text-center
                         p.card-text
-                        | #{val[0]}.
+                        | #{val[0]}
                 else 
                     a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
-                        .card-body
+                        .card-body.text-center
                             p.card-text
                             | #{val}.
         include modal.pug

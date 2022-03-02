@@ -12,6 +12,7 @@ exports.starships = function(req, res, next) {
         {
             starshipData.push(output["results"][i]["name"])
         }
+        console.log(starshipData);
         res.render('lists', {
             title: 'Starships',
             data: starshipData

@@ -14,7 +14,6 @@ exports.starships = function(req, res, next) {
         }
         console.log(starshipData);
         res.render('lists', {
-            image: false,
             title: 'Starships',
             data: starshipData
         });

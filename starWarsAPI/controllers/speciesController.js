@@ -13,7 +13,6 @@ exports.species = function(req, res, next) {
             speciesData.push(output["results"][i]["name"])
         }
         res.render('lists', {
-            image: false,
             title: 'Species',
             data: speciesData
         });

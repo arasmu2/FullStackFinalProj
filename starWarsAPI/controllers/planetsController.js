@@ -13,7 +13,6 @@ exports.planets = function(req, res, next) {
             planetData.push(output["results"][i]["name"])
         }
         res.render('lists', {
-            image: false,
             title: 'Planets',
             data: planetData
         });

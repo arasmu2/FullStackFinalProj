@@ -1,4 +1,15 @@
 ol.bg-light.list-group.list-group-horizontal-md(id='order-list') 
     each val, index in data
         li(id='list-items')
-            h1 characters Name #{val}
+            .card(style='width: 18rem;')
+                if title === 'Characters'
+                    a(data-bs-toggle='modal' data-bs-target='#exampleModal')
+                        img.card-img-top(src='https://img.pokemondb.net/sprites/home/normal/charmander.png' alt='...')
+                    .card-body
+                        p.card-text
+                        | #{val}.
+                else 
+                    a(data-bs-toggle='modal' data-bs-target='#exampleModal')
+                        .card-body
+                            p.card-text
+                            | #{val}.

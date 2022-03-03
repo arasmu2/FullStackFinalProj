@@ -2,13 +2,8 @@ include includes/head.pug
 //- https://stackoverflow.com/questions/42529379/css-background-image-is-rendered-blurred-and-not-entirely/42529554
 body.bg-image(style="background-image: url('/images/pixabaybackgroundv4.png'); background-size: 100%;")
   include includes/navbar.pug
-  h1.text-center.text-uppercase(id='main-header') #{title}
-  block content
-    h1.text-white Star Wars API
+  h1.text-center.text-uppercase.mt-5.mb-5(id='main-header') #{title}
+  <input type="text" id="searchFilter" onkeyup="myFunction()" placeholder="Search for names..">
 
-    div.text-white There are no #{title}.
   include includes/list-groups.pug
-  //- include includes/modal.pug
-
-  //- include includes/modal.pug
-    div #{data}
+  script(src='searchFilter.js')

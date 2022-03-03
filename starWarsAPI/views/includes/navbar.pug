@@ -1,7 +1,9 @@
-// https://getbootstrap.com/docs/5.0/components/navbar/
+//- // https://getbootstrap.com/docs/5.0/components/navbar/
+//- Free Star Wars icons https://icons8.com/icons/set/star-wars
 nav.navbar.navbar-expand-lg.navbar-light.bg-dark
   .container-fluid
-    a.navbar-brand.text-white(href='/') Star Wars
+    a.navbar-brand.text-white(href='/') 
+      img(src="https://img.icons8.com/color/96/000000/star-wars.png")
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
@@ -19,6 +21,3 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-dark
         li.nav-item
           //- Take note about 'tabindex="-1" later
           a.nav-link.text-white.mx-lg-4(href='/planets' tabindex='-1' aria-disabled='true') Planets
-      //- form.d-flex.ms-auto
-      //-   input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
-      //-   button.btn.btn-outline-success(type='submit') Search

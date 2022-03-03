@@ -3,7 +3,7 @@ include includes/head.pug
 body.bg-image(style="background-image: url('/images/pixabaybackgroundv4.png'); background-size: 100%;")
   include includes/navbar.pug
   h1.text-center.text-uppercase.mt-5.mb-5(id='main-header') #{title}
-  <input type="text" id="searchFilter" onkeyup="myFunction()" placeholder="Search for names..">
+  <input type="text" id="searchFilter" onkeyup="myFunction()" placeholder='Search for #{title}...'>
 
   include includes/list-groups.pug
   script(src='searchFilter.js')

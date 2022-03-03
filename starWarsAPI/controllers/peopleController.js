@@ -8,13 +8,24 @@ exports.people = function(req, res, next) {
     .then(result => result.json())
     .then((output) => {
         var peopleData = [];
+        var extraData = [];
         for (let i = 0; i < output.length; i++)
         {
-            peopleData.push([output[i]["name"], output[i]["image"]])
+            peopleData.push([output[i]["name"], output[i]["image"]]);
+            extraData.push(["Height: " + output[i]["height"] + '\n',
+                "Homeworld: " + output[i]["homeworld"] + '\n',
+                "Born: " + output[i]["born"] + '\n',
+                "Birth Location: " + output[i]["bornLocation"] + '\n',
+                "Died: " + output[i]["died"] + '\n',
+                "Hair Color: " + output[i]["hairColor"] + '\n',
+                "Eye Color: " + output[i]["eyeColor"] + '\n',
+                "Master(s): " + output[i]["masters"] + '\n',
+                "Apprentice(s): " + output[i]["apprentices"] + '\n']);
         }
         res.render('lists', {
             title: 'Characters',
-            data: peopleData
+            data: peopleData,
+            extra: extraData
         });
     })
     .catch(err => console.error(err));

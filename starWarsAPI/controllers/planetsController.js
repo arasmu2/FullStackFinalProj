@@ -12,9 +12,10 @@ exports.planets = function(req, res, next) {
         for (let i = 0; i < output["results"].length; i++)
         {
             planetData.push(output["results"][i]["name"]);
+            
             fetch(output["results"][i]["url"].toLocaleString("en-US"))
             .then(result => result.json())
-            .then((output2) => {;
+            .then((output2) => {
                 extraData.push(["Diameter: " + output2["result"]["properties"]["diameter"] + '\n',
                     "Rotation Period: " + output2["result"]["properties"]["rotation_period"] + '\n',
                     "Orbital Period: " + output2["result"]["properties"]["orbital_period"] + '\n',

@@ -2,6 +2,7 @@ include includes/head.pug
 //- https://stackoverflow.com/questions/42529379/css-background-image-is-rendered-blurred-and-not-entirely/42529554
 body.bg-image(style="background-image: url('/images/pixabaybackgroundv4.png'); background-size: 100%;")
   include includes/navbar.pug
+  h1.text-center.text-uppercase(id='main-header') #{title}
   block content
     h1.text-white Star Wars API
 

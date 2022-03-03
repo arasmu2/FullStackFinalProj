@@ -1,7 +1,7 @@
-ol.list-group.d-flex(id='order-list-container') 
+ol.list-group.list-group-horizontal-md(id='order-list-container') 
     each val, index in data
-        li.mt-2(id='list-items')
-            .card(style='width: 18rem;')
+        li(id='list-items')
+            .card(id='card' style='width: 18rem;')
                 if title === 'Characters'
                     a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
                         img.card-img-top(src=val[1] alt='Star Wars Characters' id="SW-images")

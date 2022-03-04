@@ -17,6 +17,7 @@ exports.movies = function(req, res, next) {
                 "Release Date: " + output["result"][i]["properties"]["release_date"] + '\n',
                 "Opening Crawl: " + output["result"][i]["properties"]["opening_crawl"] + '\n']);
         }
+        console.log(movieData);
         res.render('lists', {
             title: 'Movies',
             data: movieData,

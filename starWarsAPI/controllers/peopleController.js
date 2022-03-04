@@ -22,6 +22,7 @@ exports.people = function(req, res, next) {
                 "Master(s): " + output[i]["masters"] + '\n',
                 "Apprentice(s): " + output[i]["apprentices"] + '\n']);
         }
+        console.log(peopleData);
         res.render('lists', {
             title: 'Characters',
             data: peopleData,

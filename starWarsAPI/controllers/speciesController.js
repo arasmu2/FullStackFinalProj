@@ -26,6 +26,7 @@ exports.species = function(req, res, next) {
             });
         }
 
+        console.log(speciesData);
         res.render('lists', {
             title: 'Species',
             data: speciesData,

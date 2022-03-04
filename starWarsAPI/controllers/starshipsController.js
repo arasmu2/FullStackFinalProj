@@ -32,6 +32,7 @@ exports.starships = function(req, res, next) {
             });
 
         }
+        console.log(starshipData);
         res.render('lists', {
             title: 'Starships',
             data: starshipData,

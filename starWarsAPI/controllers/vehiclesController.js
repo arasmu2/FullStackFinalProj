@@ -30,6 +30,7 @@ exports.vehicles = function(req, res, next) {
                     "Pilot(s): " + output2["result"]["properties"]["pilots"] + '\n']);
             });
         }
+        console.log(vehicleData);
         res.render('lists', {
             title: 'Vehicles',
             data: vehicleData,

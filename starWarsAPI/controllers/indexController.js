@@ -1,9 +1,9 @@
 const { body, validationResult } = require("express-validator");
 
-
 var async = require("async");
 var axios = require("axios");
 var Parser = require("../public/rndMeme").getInstance();
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 exports.index = async function (req, res) {
@@ -23,7 +23,9 @@ exports.index = async function (req, res) {
   }
 
   let captions = Parser.parseQuote(data);
-  captions = ["we live in", "a society"];
+  let meme = Parser.randomMeme();
+  // console.log(meme);
+  // captions = ["we live in", "a society"];
 
   try {
     img_response = await axios.post(
@@ -31,7 +33,7 @@ exports.index = async function (req, res) {
       {},
       {
         params: {
-          template_id: "14371066",
+          template_id: meme[0],
           username: "project_acct",
           password: "insecurePW",
           text0: captions[0],
@@ -49,5 +51,10 @@ exports.index = async function (req, res) {
     img_err = error;
   }
 
-  res.render("index", { results: data, err: err, meme: img_url });
+  res.render("index", {
+    results: data,
+    err: err,
+    meme: img_url,
+    memeName: meme[1],
+  });
 };

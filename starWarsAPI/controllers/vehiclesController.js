@@ -4,37 +4,43 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 var async = require('async');
 
 exports.vehicles = function(req, res, next) {
-    fetch('https://www.swapi.tech/api/vehicles')
-    .then(result => result.json())
-    .then((output) => {
-        var vehicleData = [];
-        var extraData = [];
-        for (let i = 0; i < output["results"].length; i++)
-        {
-            vehicleData.push(output["results"][i]["name"])
+    var promises = [];
+    var vehiclesData = [];
+    var extraData = [];
+    var uids = [4, 7, 6, 8, 14, 18, 16, 19, 20, 24, 25, 30, 26, 33, 34, 35,
+        36, 37, 38, 42, 44, 45, 46, 50, 51, 53, 54, 55, 56, 57, 60, 62, 69,
+        70, 67, 71, 72, 73, 76];
 
-            fetch(output["results"][i]["url"].toLocaleString("en-US"))
-            .then(result => result.json())
-            .then((output2) => {
-                extraData.push(["Model: " + output2["result"]["properties"]["model"] + '\n',
-                    "Vehicle Class: " + output2["result"]["properties"]["vehicle_class"] + '\n',
-                    "Manufacturer: " + output2["result"]["properties"]["manufacturer"] + '\n',
-                    "Cost in Credits: " + output2["result"]["properties"]["cost_in_credits"] + '\n',
-                    "Length: " + output2["result"]["properties"]["length"] + '\n',
-                    "Crew: " + output2["result"]["properties"]["crew"] + '\n',
-                    "Passenger(s): " + output2["result"]["properties"]["passengers"] + '\n',
-                    "Maximum Atmosphering Speed: " + output2["result"]["properties"]["max_atmosphering_speed"] + '\n',
-                    "Cargo Capacity: " + output2["result"]["properties"]["cargo_capacity"] + '\n',
-                    "Consumables: " + output2["result"]["properties"]["consumables"] + '\n',
-                    "Film(s): " + output2["result"]["properties"]["films"] + '\n',
-                    "Pilot(s): " + output2["result"]["properties"]["pilots"] + '\n']);
-            });
+    for (let j = 0; j < 39; j++)
+    {
+        url = 'https://www.swapi.tech/api/vehicles/' + uids[j];
+        promises.push(fetch(url).then(result => result.json()));
+    }
+
+    Promise.all(promises).then((output) => {
+        for (let i = 0; i < 39; i++)
+        {
+            vehiclesData.push(output[i]["result"]["properties"]["name"]);
+            
+            extraData.push(["Model: " + output[i]["result"]["properties"]["model"] + '\n',
+                "Starship Class: " + output[i]["result"]["properties"]["starship_class"] + '\n',
+                "Manufacturer: " + output[i]["result"]["properties"]["manufacturer"] + '\n',
+                "Cost in Credits: " + output[i]["result"]["properties"]["cost_in_credits"] + '\n',
+                "Length: " + output[i]["result"]["properties"]["length"] + '\n',
+                "Crew: " + output[i]["result"]["properties"]["crew"] + '\n',
+                "Passenger(s): " + output[i]["result"]["properties"]["passengers"] + '\n',
+                "Maximum Atmosphering Speed: " + output[i]["result"]["properties"]["max_atmosphering_speed"] + '\n',
+                "Hyperdrive Rating: " + output[i]["result"]["properties"]["hyperdrive_rating"] + '\n',
+                "MGLT: " + output[i]["result"]["properties"]["MGLT"] + '\n',
+                "Cargo Capacity: " + output[i]["result"]["properties"]["cargo_capacity"] + '\n',
+                "Consumables: " + output[i]["result"]["properties"]["consumables"] + '\n',
+                "Pilot(s): " + output[i]["result"]["properties"]["pilots"] + '\n']);
         }
         res.render('lists', {
             title: 'Vehicles',
-            data: vehicleData,
+            data: vehiclesData,
             extra: extraData
         });
-    })
-    .catch(err => console.error(err));
+
+    });
 };

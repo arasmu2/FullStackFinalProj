@@ -39,8 +39,4 @@ exports.species = function(req, res, next) {
 
     });
 
-
-
-
-
 };

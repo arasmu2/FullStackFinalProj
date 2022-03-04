@@ -102,7 +102,7 @@ class Parser {
   }
 
   randomMeme() {
-    let temp = Math.floor(Math.random() * 36);
+    let temp = Math.floor(Math.random() * this.memeList.length);
     return this.memeList[temp];
   }
 }

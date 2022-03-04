@@ -1,10 +1,10 @@
 ol.list-group.list-group-horizontal-md(id='order-list-container') 
     each val, index in data
         li(id='list-items')
-            .card(id='card' style='width: 18rem;')
+            .card.border-warning.bg-secondary(id='card' style='width: 18rem;')
                 if title === 'Characters'
                     a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
-                        img.card-img-top(src=val[1] alt='Star Wars Characters' id="SW-images")
+                        img.card-img-top(src=val[1] alt='Star Wars Characters')
                     .card-body.text-center
                         p.card-text
                         | #{val[0]}

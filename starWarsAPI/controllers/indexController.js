@@ -52,7 +52,7 @@ exports.index = async function (req, res) {
   }
 
   res.render("index", {
-    results: data,
+    quote: data,
     err: err,
     meme: img_url,
     memeName: meme[1],

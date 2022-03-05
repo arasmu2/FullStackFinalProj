@@ -3,7 +3,7 @@
 class Parser {
   memeList = [
     [14371066, "Wise Yoda"],
-    [19194965, "Vade Nooo"],
+    [19194965, "Vader Nooo"],
     [1373425, "Not the droids you're looking for"],
     [18202798, "You were the chosen one"],
     [53489704, "Emperor Palpatine"],
@@ -17,7 +17,7 @@ class Parser {
     [24657376, "Jar Jar Binks"],
     [47203863, "Angry Anakin"],
     [48699739, "It's true, all of it"],
-    [159448159, "Archives are incomplete"],
+    [159448159, "The archives are incomplete"],
     [116886647, "Excited Porg"],
     [20842084, "Force choke"],
     [25330875, "Sad stormtrooper"],
@@ -27,7 +27,7 @@ class Parser {
     [194250995, "Vauge and unconvincing"],
     [19890752, "Obi-Wan lightsaber"],
     [202330453, "There is another"],
-    [11925933, "... but it checks out"],
+    [11925933, "Older, but it checks out"],
     [39273090, "Escaping Millenium Falcon"],
     [67936974, "Wreched hive of scum and villany"],
     [29328726, "Luke and Han on Hoth"],

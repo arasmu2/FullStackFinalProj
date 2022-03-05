@@ -15,7 +15,7 @@ exports.species = function(req, res, next) {
     }
 
     Promise.all(promises).then((output) => {
-        for (let i = 0; i < 10; i++)
+        for (let i = 0; i < 37; i++)
         {
             speciesData.push(output[i]["result"]["properties"]["name"]);
             

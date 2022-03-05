@@ -4,40 +4,43 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 var async = require('async');
 
 exports.starships = function(req, res, next) {
-    fetch('https://www.swapi.tech/api/starships')
-    .then(result => result.json())
-    .then((output) => {
-        var starshipData = [];
-        var extraData = [];
-        for (let i = 0; i < output["results"].length; i++)
+    var promises = [];
+    var starshipsData = [];
+    var extraData = [];
+    var uids = [2,3, 5, 9, 11, 10, 13, 15, 12, 17, 21, 22, 23, 28, 27, 29, 31, 32,
+        39, 40, 43, 41, 47, 48, 52, 49, 59, 58, 61, 63, 64, 65, 66, 68, 74, 75];
+
+    for (let j = 0; j < 36; j++)
+    {
+        url = 'https://www.swapi.tech/api/starships/' + uids[j];
+        promises.push(fetch(url).then(result => result.json()));
+    }
+
+    Promise.all(promises).then((output) => {
+        for (let i = 0; i < 36; i++)
         {
-            starshipData.push(output["results"][i]["name"])
-
-            fetch(output["results"][i]["url"].toLocaleString("en-US"))
-            .then(result => result.json())
-            .then((output2) => {
-                extraData.push(["Model: " + output2["result"]["properties"]["model"] + '\n',
-                    "Starship Class: " + output2["result"]["properties"]["starship_class"] + '\n',
-                    "Manufacturer: " + output2["result"]["properties"]["manufacturer"] + '\n',
-                    "Cost in Credits: " + output2["result"]["properties"]["cost_in_credits"] + '\n',
-                    "Length: " + output2["result"]["properties"]["length"] + '\n',
-                    "Crew: " + output2["result"]["properties"]["crew"] + '\n',
-                    "Passenger(s): " + output2["result"]["properties"]["passengers"] + '\n',
-                    "Maximum Atmosphering Speed: " + output2["result"]["properties"]["max_atmosphering_speed"] + '\n',
-                    "Hyperdrive Rating: " + output2["result"]["properties"]["hyperdrive_rating"] + '\n',
-                    "MGLT: " + output2["result"]["properties"]["MGLT"] + '\n',
-                    "Cargo Capacity: " + output2["result"]["properties"]["cargo_capacity"] + '\n',
-                    "Consumables: " + output2["result"]["properties"]["consumables"] + '\n',
-                    "Pilot(s): " + output2["result"]["properties"]["pilots"] + '\n']);
-            });
-
+            starshipsData.push(output[i]["result"]["properties"]["name"]);
+            
+            extraData.push(["Model: " + output[i]["result"]["properties"]["model"] + '\n',
+                "Starship Class: " + output[i]["result"]["properties"]["starship_class"] + '\n',
+                "Manufacturer: " + output[i]["result"]["properties"]["manufacturer"] + '\n',
+                "Cost in Credits: " + output[i]["result"]["properties"]["cost_in_credits"] + '\n',
+                "Length: " + output[i]["result"]["properties"]["length"] + '\n',
+                "Crew: " + output[i]["result"]["properties"]["crew"] + '\n',
+                "Passenger(s): " + output[i]["result"]["properties"]["passengers"] + '\n',
+                "Maximum Atmosphering Speed: " + output[i]["result"]["properties"]["max_atmosphering_speed"] + '\n',
+                "Hyperdrive Rating: " + output[i]["result"]["properties"]["hyperdrive_rating"] + '\n',
+                "MGLT: " + output[i]["result"]["properties"]["MGLT"] + '\n',
+                "Cargo Capacity: " + output[i]["result"]["properties"]["cargo_capacity"] + '\n',
+                "Consumables: " + output[i]["result"]["properties"]["consumables"] + '\n',
+                "Pilot(s): " + output[i]["result"]["properties"]["pilots"] + '\n']);
         }
         console.log(starshipData);
         res.render('lists', {
             title: 'Starships',
-            data: starshipData,
+            data: starshipsData,
             extra: extraData
         });
-    })
-    .catch(err => console.error(err));
+
+    });
 };

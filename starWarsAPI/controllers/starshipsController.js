@@ -35,6 +35,7 @@ exports.starships = function(req, res, next) {
                 "Consumables: " + output[i]["result"]["properties"]["consumables"] + '\n',
                 "Pilot(s): " + output[i]["result"]["properties"]["pilots"] + '\n']);
         }
+        console.log(starshipData);
         res.render('lists', {
             title: 'Starships',
             data: starshipsData,

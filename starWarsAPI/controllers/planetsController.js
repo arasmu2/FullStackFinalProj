@@ -28,6 +28,7 @@ exports.planets = function(req, res, next) {
                 "Terrain(s): " + output[i]["result"]["properties"]["terrain"] + '\n',
                 "Surface Water: " + output[i]["result"]["properties"]["surface_water"] + '\n']);
         }
+        console.log(planetData);
         res.render('lists', {
             title: 'Planets',
             data: planetData,

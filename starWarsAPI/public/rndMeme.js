@@ -1,6 +1,6 @@
 // https://stackoverflow.com/questions/32245687/node-js-and-custom-module-with-express-js
 
-class Parser {
+class Memes {
   memeList = [
     [14371066, "Wise Yoda"],
     [19194965, "Vader Nooo"],
@@ -40,13 +40,14 @@ class Parser {
     [24662368, "Finn is lost"],
   ];
 
-  constructor(quote) {}
+  constructor() {}
 
   parseQuote(quote) {
     let captions = ["", ""];
     // sanitize input
     quote = quote.replaceAll("[", "");
     quote = quote.replaceAll("]", "");
+    quote = quote.replaceAll('"', "");
     // break up the quote into substrings to insert into the meme
     quote = quote.split(/([!?.-])/);
 
@@ -61,8 +62,6 @@ class Parser {
         break;
       }
     }
-    // console.log(quote);
-    // console.log(sentence_count + " sentences");
 
     let end = false;
     let qi = 0;
@@ -109,5 +108,5 @@ class Parser {
 
 //added function for getting instance
 module.exports.getInstance = function () {
-  return new Parser();
+  return new Memes();
 };

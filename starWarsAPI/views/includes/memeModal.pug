@@ -7,13 +7,13 @@
       .modal-body
         img.img-center.meme-maker-img(src=val[2] alt='Star Wars Characters')
         form(url="https://api.imgflip.com/caption_image" role='POST')
-          .form-group.mb-3
+          div.form-group.mb-3
             <label for="text0" class="col-form-label">Top Text:</label>
             <input type="text" class="form-control" id="text0">
-          .form-group.mb-3
+          div.form-group.mb-3
             <label for="text1" class="col-form-label">Bottom Text:</label>
             <input type="text" class="form-control" id="text1">
-          .form-group.modal-footer
+          .modal-footer.form-group
             button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
             button.btn.btn-primary(type='submit' id='create-btn') Create
       

@@ -9,7 +9,10 @@ var extraData = [];
 exports.meme = function (req, res) {
   var memeList = SWMemes.allMemes();
 
-  for (var i = 0; i < memeList.length; i++) memeData.push([memeList[i][1], memeList[i][2]]);
+  for (var i = 0; i < memeList.length; i++) {
+    memeData.push([memeList[i][1], memeList[i][2]]);
+    extraData.push([memeList[i][0]]);
+  }
 
   res.render("lists", {
     title: "Memes",

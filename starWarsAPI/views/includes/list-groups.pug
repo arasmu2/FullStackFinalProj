@@ -19,4 +19,7 @@ ol.list-group.list-group-horizontal-md(id='order-list-container')
                         .card-body.text-center
                             p.card-text
                             | #{val}
-        include modal.pug
+        if title !== 'Memes'
+            include modal.pug
+        else 
+            include memeModal.pug

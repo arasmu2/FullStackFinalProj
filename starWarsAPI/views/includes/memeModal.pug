@@ -1,4 +1,4 @@
-.modal.fade(id=('exampleModal'+index) tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+.modal.fade(id=('memeModal'+index) tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
   .modal-dialog.modal-dialog-centered
     .modal-content
       .modal-header
@@ -7,12 +7,13 @@
       .modal-body
         img.img-center.meme-maker-img(src=val[1] alt='Star Wars Characters')
         div.mb-3
-          <label for="recipient-name" class="col-form-label">Top Text:</label>
-          <input type="text" class="form-control" id="recipient-name">
+          <label for="top-text" class="col-form-label">Top Text:</label>
+          <input type="text" class="form-control" id="top-text">
         div.mb-3
-          <label for="recipient-name" class="col-form-label">Bottom Text:</label>
-          <input type="text" class="form-control" id="recipient-name">
+          <label for="bottom-text" class="col-form-label">Bottom Text:</label>
+          <input type="text" class="form-control" id="bottom-text">
       .modal-footer
         button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-        button.btn.btn-primary(type='button' data-bs-dismiss='modal') Create
+        button.btn.btn-primary(type='button' id=('create-btn'+index)) Create
+      
 //- https://stackoverflow.com/questions/59230116/how-to-get-modal-dialog-to-send-correct-object-in-pug-iteration

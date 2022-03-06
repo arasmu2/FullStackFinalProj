@@ -9,9 +9,6 @@ block content
   if error
     p.text-white Error generating your random Star Wars meme.
   else
-    //- p Here is your randomly generated Star Wars meme - enjoy :)
-
-    //- div "Randomly generated Star Wars meme will go here"
     div.container
       div.d-flex.mt-5.justify-content-center
         div.card.text-white.bg-secondary.text-center.border-warning(style='width: 60vw')
@@ -19,5 +16,6 @@ block content
           img.card-img-top.rnd-meme-img.border-warning(src=meme)
           div.card-body
             p.card-footer.bg-secondary.border-warning="Meme: " + memeName 
+              br 
               br
-            p=quote
+              = quote

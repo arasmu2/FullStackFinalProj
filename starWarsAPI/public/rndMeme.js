@@ -93,15 +93,16 @@ class Memes {
       if (sentence_count == 1) ci++;
       end = false;
     }
-
-    console.log(captions);
-
     return captions;
   }
 
   randomMeme() {
-    let temp = Math.floor(Math.random() * this.memeList.length);
+    var temp = Math.floor(Math.random() * this.memeList.length);
     return this.memeList[temp];
+  }
+
+  allMemes() {
+    return this.memeList;
   }
 }
 

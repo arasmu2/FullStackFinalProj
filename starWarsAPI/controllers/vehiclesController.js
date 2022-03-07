@@ -1,9 +1,14 @@
+// Controls the vehicles data
+
 const { body,validationResult } = require('express-validator');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 var async = require('async');
+
+// Stores the vehicles API data
 var vehiclesData = [];
 var extraData = [];
+var vehiclesNum = 12; //39;
 
 
 exports.vehicles = function(req, res, next) {
@@ -12,15 +17,19 @@ exports.vehicles = function(req, res, next) {
         36, 37, 38, 42, 44, 45, 46, 50, 51, 53, 54, 55, 56, 57, 60, 62, 69,
         70, 67, 71, 72, 73, 76];
 
+    // Checks if data has  been collected already
     if (vehiclesData.length === 0) {
-        for (let j = 0; j < 39; j++)
+
+        // Gets individual vehicle urls
+        for (let j = 0; j < vehiclesNum; j++)
         {
             url = 'https://www.swapi.tech/api/vehicles/' + uids[j];
             promises.push(fetch(url).then(result => result.json()));
         }
 
+        // Fetches API data
         Promise.all(promises).then((output) => {
-            for (let i = 0; i < 39; i++)
+            for (let i = 0; i < vehiclesNum; i++)
             {
                 vehiclesData.push(output[i]["result"]["properties"]["name"]);
                 
@@ -38,6 +47,8 @@ exports.vehicles = function(req, res, next) {
                     "Consumables: " + output[i]["result"]["properties"]["consumables"] + '\n',
                     "Pilot(s): " + output[i]["result"]["properties"]["pilots"] + '\n']);
             }
+
+            // Sends data to pug view
             res.render('lists', {
                 title: 'Vehicles',
                 data: vehiclesData,
@@ -47,6 +58,7 @@ exports.vehicles = function(req, res, next) {
         });
     }
     else {
+        // Sends data to pug view
         res.render('lists', {
             title: 'Vehicles',
             data: vehiclesData,

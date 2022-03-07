@@ -1,3 +1,5 @@
+// Controls the home page API data collection
+
 const { body, validationResult } = require("express-validator");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const https = require("https");

@@ -7,9 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var app = express();
 
+// Directs app to views
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+// Directs app to public content (Images, stylesheets, etc)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

@@ -1,12 +1,18 @@
+// Controls the movies API data
+
 const { body,validationResult } = require('express-validator');
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 var async = require('async');
+
+// Stores the movie API data
 var movieData = [];
 var extraData = [];
 
 exports.movies = function(req, res, next) {
+    // Checks if movie API data  has already been collected
     if (movieData.length === 0) {
+        // Fetches movie API data
         fetch('https://www.swapi.tech/api/films')
         .then(result => result.json())
         .then((output) => {
@@ -18,6 +24,7 @@ exports.movies = function(req, res, next) {
                     "Release Date: " + output["result"][i]["properties"]["release_date"] + '\n',
                     "Opening Crawl: " + output["result"][i]["properties"]["opening_crawl"] + '\n']);
             }
+            // Sends data to pug view
             res.render('lists', {
                 title: 'Movies',
                 data: movieData,
@@ -27,6 +34,7 @@ exports.movies = function(req, res, next) {
         .catch(err => console.error(err));
     }
     else {
+        // Sends data to API view
         res.render('lists', {
             title: 'Movies',
             data: movieData,

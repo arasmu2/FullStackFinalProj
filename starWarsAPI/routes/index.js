@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
+// The page controllers needed
 var index_controller = require("../controllers/indexController");
 var movies_controller = require("../controllers/moviesController");
 var people_controller = require("../controllers/peopleController");
@@ -10,6 +11,7 @@ var vehicles_controller = require("../controllers/vehiclesController");
 var planets_controller = require("../controllers/planetsController");
 var meme_controller = require("../controllers/memeController");
 
+// The routes for each page controller
 router.get("/", index_controller.index);
 router.get("/movies", movies_controller.movies);
 router.get("/people", people_controller.people);

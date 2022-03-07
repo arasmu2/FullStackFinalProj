@@ -8,9 +8,18 @@ ol.list-group.list-group-horizontal-md(id='order-list-container')
                     .card-body.text-center
                         p.card-text
                             | #{val[0]}
+                else if title === 'Memes'
+                    a(data-bs-toggle='modal' data-bs-target='#memeModal'+index)
+                        img.card-img-top(src=val[2] alt='Star Wars Meme')
+                    .card-body.text-center
+                        p.card-text
+                        | #{val[1]}
                 else 
                     a(data-bs-toggle='modal' data-bs-target='#dataModal'+index)
                         .card-body.text-center
                             p.card-text
                                 | #{val}
-        include modal.pug
+        if title !== 'Memes'
+            include modal.pug
+        else 
+            include memeModal.pug

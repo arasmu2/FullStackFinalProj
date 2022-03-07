@@ -1,9 +1,5 @@
 # FullStackFinalProj
 
-# just testing my git setup
-
-# Testing my git setup - Al
-
 ## How to Run
 
 $ cd starWarsAPI
@@ -11,3 +7,6 @@ $ cd starWarsAPI
 $ npm install
 
 $ npm start
+
+## Sources used
+- Express Tutorial: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website

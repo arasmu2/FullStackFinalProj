@@ -31,15 +31,26 @@ li.nav-item > a:hover {
   margin: 0 auto;
 }
 #main-header {
-  color: #FFE81F;
+  color: #ffe81f;
 }
 .rnd-meme-img {
-  max-height: 40vw;
+  max-height: 35vw;
   object-fit: contain;
 }
 
+.meme-maker-img {
+  max-height: 15vw;
+  object-fit: contain;
+}
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #searchFilter {
-  background-image: url('https://img.icons8.com/material-rounded/24/000000/search-more.png'); /* Add a search icon to input */
+  background-image: url("https://img.icons8.com/material-rounded/24/000000/search-more.png"); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
   font-size: 16px; /* Increase font-size */
@@ -49,4 +60,6 @@ li.nav-item > a:hover {
   width: 75%;
   display: block;
   margin: 0% auto 12px;
+
 }
+

@@ -12,9 +12,10 @@ var extraData = [];
 exports.meme = function (req, res) {
   var memeList = SWMemes.allMemes();
 
-  for (var i = 0; i < memeList.length; i++) {
-    memeData.push([memeList[i][0], memeList[i][1], memeList[i][2]]);
-  }
+  if (memeData.length === 0)
+    for (var i = 0; i < memeList.length; i++) {
+      memeData.push([memeList[i][0], memeList[i][1], memeList[i][2]]);
+    }
 
   // Sends data to pug view
   res.render("lists", {

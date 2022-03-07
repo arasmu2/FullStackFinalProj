@@ -1,11 +1,23 @@
-.modal.fade(id=('exampleModal'+index) tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+.modal.fade(id=('dataModal'+index) tabindex='-1' aria-labelledby='dataModalLabel' aria-hidden='true')
   .modal-dialog
-    .modal-content
-      .modal-header
-        h5#exampleModalLabel.modal-title #{val}
+    .modal-content.bg-secondary.border-warning
+      .modal-header.text-white.border-warning
+        if title === 'Characters'
+          h5#exampleModalLabel.modal-title #{val[0]}
+        else
+          h5#exampleModalLabel.modal-title #{val}
         button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-      .modal-body
-        | ...
-      .modal-footer
-        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+      .modal-body.text-white
+        .card.bg-secondary
+          if title === 'Characters'
+            img.card-img-top.border-warning(src=val[1] alt='Star Wars Character')
+            .card-body 
+              p.card-text 
+                | #{extra[index].join("<br/>")} 
+          else 
+            .card-body 
+              p.card-text 
+                | #{extra[index]}
+      .modal-footer.border-warning
+        button.btn.btn-light(type='button' data-bs-dismiss='modal') Close
 //- https://stackoverflow.com/questions/59230116/how-to-get-modal-dialog-to-send-correct-object-in-pug-iteration

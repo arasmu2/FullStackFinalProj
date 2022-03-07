@@ -1,16 +1,16 @@
 ol.list-group.list-group-horizontal-md(id='order-list-container') 
     each val, index in data
         li(id='list-items')
-            .card.border-warning.bg-secondary(id='card' style='width: 18rem;')
+            .card.border-warning.bg-secondary.text-white(id='card' style='width: 18rem;')
                 if title === 'Characters'
-                    a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
-                        img.card-img-top(src=val[1] alt='Star Wars Characters')
+                    a(data-bs-toggle='modal' data-bs-target='#dataModal'+index)
+                        img.card-img-top.border-bottom.border-warning(src=val[1] alt='Star Wars Character')
                     .card-body.text-center
                         p.card-text
-                        | #{val[0]}
+                            | #{val[0]}
                 else 
-                    a(data-bs-toggle='modal' data-bs-target='#exampleModal'+index)
+                    a(data-bs-toggle='modal' data-bs-target='#dataModal'+index)
                         .card-body.text-center
                             p.card-text
-                            | #{val}
+                                | #{val}
         include modal.pug

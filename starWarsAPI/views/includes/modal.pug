@@ -10,7 +10,7 @@
       .modal-body.text-white
         .card.bg-secondary
           if title === 'Characters'
-            img.card-img-top.border-warning(src=val[1] alt='Star Wars Character')
+            img.card-img-top.border-warning.character-img(src=val[1] alt='Star Wars Character')
             .card-body 
               p.card-text 
                 | #{extra[index].join("<br/>")} 

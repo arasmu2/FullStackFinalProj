@@ -19,15 +19,15 @@ exports.people = function(req, res, next) {
             for (let i = 0; i < output.length; i++)
             {
                 peopleData.push([output[i]["name"], output[i]["image"]]);
-                extraData.push(["Height: " + output[i]["height"] + '\n',
-                    "Homeworld: " + output[i]["homeworld"] + '\n',
-                    "Born: " + output[i]["born"] + '\n',
-                    "Birth Location: " + output[i]["bornLocation"] + '\n',
-                    "Died: " + output[i]["died"] + '\n',
-                    "Hair Color: " + output[i]["hairColor"] + '\n',
-                    "Eye Color: " + output[i]["eyeColor"] + '\n',
-                    "Master(s): " + output[i]["masters"] + '\n',
-                    "Apprentice(s): " + output[i]["apprentices"] + '\n']);
+                extraData.push(["Height: " + output[i]["height"],
+                    "Homeworld: " + output[i]["homeworld"],
+                    "Born: " + output[i]["born"],
+                    "Birth Location: " + output[i]["bornLocation"],
+                    "Died: " + output[i]["died"],
+                    "Hair Color: " + output[i]["hairColor"],
+                    "Eye Color: " + output[i]["eyeColor"],
+                    "Master(s): " + output[i]["masters"],
+                    "Apprentice(s): " + output[i]["apprentices"]]);
             }
             // Sends data to pug view
             res.render('lists', {

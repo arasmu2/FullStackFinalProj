@@ -8,7 +8,7 @@ var async = require('async');
 // Stores data to reduce API calls
 var planetData = [];
 var extraData = [];
-var planetsNum  =  12; // 60;
+var planetsNum  =  15; // 60;
 
 exports.planets = function(req, res, next) {
     var promises = [];
@@ -28,14 +28,14 @@ exports.planets = function(req, res, next) {
             {
                 planetData.push(output[i]["result"]["properties"]["name"]);
                 
-                extraData.push(["Diameter: " + output[i]["result"]["properties"]["diameter"] + '\n',
-                    "Rotation Period: " + output[i]["result"]["properties"]["rotation_period"] + '\n',
-                    "Orbital Period: " + output[i]["result"]["properties"]["orbital_period"] + '\n',
-                    "Gravity: " + output[i]["result"]["properties"]["gravity"] + '\n',
-                    "Population: " + output[i]["result"]["properties"]["population"] + '\n',
-                    "Climate(s): " + output[i]["result"]["properties"]["climate"] + '\n',
-                    "Terrain(s): " + output[i]["result"]["properties"]["terrain"] + '\n',
-                    "Surface Water: " + output[i]["result"]["properties"]["surface_water"] + '\n']);
+                extraData.push(["Diameter: " + output[i]["result"]["properties"]["diameter"],
+                    "Rotation Period: " + output[i]["result"]["properties"]["rotation_period"],
+                    "Orbital Period: " + output[i]["result"]["properties"]["orbital_period"],
+                    "Gravity: " + output[i]["result"]["properties"]["gravity"],
+                    "Population: " + output[i]["result"]["properties"]["population"],
+                    "Climate(s): " + output[i]["result"]["properties"]["climate"],
+                    "Terrain(s): " + output[i]["result"]["properties"]["terrain"],
+                    "Surface Water: " + output[i]["result"]["properties"]["surface_water"]]);
             }
 
             // Sends data to pug view

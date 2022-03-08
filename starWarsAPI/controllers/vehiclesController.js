@@ -8,7 +8,7 @@ var async = require('async');
 // Stores the vehicles API data
 var vehiclesData = [];
 var extraData = [];
-var vehiclesNum = 12; //39;
+var vehiclesNum = 15; //39;
 
 
 exports.vehicles = function(req, res, next) {
@@ -19,6 +19,7 @@ exports.vehicles = function(req, res, next) {
 
     // Checks if data has  been collected already
     if (vehiclesData.length === 0) {
+        console.log("IF");
 
         // Gets individual vehicle urls
         for (let j = 0; j < vehiclesNum; j++)
@@ -33,19 +34,19 @@ exports.vehicles = function(req, res, next) {
             {
                 vehiclesData.push(output[i]["result"]["properties"]["name"]);
                 
-                extraData.push(["Model: " + output[i]["result"]["properties"]["model"] + '\n',
-                    "Starship Class: " + output[i]["result"]["properties"]["starship_class"] + '\n',
-                    "Manufacturer: " + output[i]["result"]["properties"]["manufacturer"] + '\n',
-                    "Cost in Credits: " + output[i]["result"]["properties"]["cost_in_credits"] + '\n',
-                    "Length: " + output[i]["result"]["properties"]["length"] + '\n',
-                    "Crew: " + output[i]["result"]["properties"]["crew"] + '\n',
-                    "Passenger(s): " + output[i]["result"]["properties"]["passengers"] + '\n',
-                    "Maximum Atmosphering Speed: " + output[i]["result"]["properties"]["max_atmosphering_speed"] + '\n',
-                    "Hyperdrive Rating: " + output[i]["result"]["properties"]["hyperdrive_rating"] + '\n',
-                    "MGLT: " + output[i]["result"]["properties"]["MGLT"] + '\n',
-                    "Cargo Capacity: " + output[i]["result"]["properties"]["cargo_capacity"] + '\n',
-                    "Consumables: " + output[i]["result"]["properties"]["consumables"] + '\n',
-                    "Pilot(s): " + output[i]["result"]["properties"]["pilots"] + '\n']);
+                extraData.push(["Model: " + output[i]["result"]["properties"]["model"],
+                    "Starship Class: " + output[i]["result"]["properties"]["starship_class"],
+                    "Manufacturer: " + output[i]["result"]["properties"]["manufacturer"],
+                    "Cost in Credits: " + output[i]["result"]["properties"]["cost_in_credits"],
+                    "Length: " + output[i]["result"]["properties"]["length"],
+                    "Crew: " + output[i]["result"]["properties"]["crew"],
+                    "Passenger(s): " + output[i]["result"]["properties"]["passengers"],
+                    "Maximum Atmosphering Speed: " + output[i]["result"]["properties"]["max_atmosphering_speed"],
+                    "Hyperdrive Rating: " + output[i]["result"]["properties"]["hyperdrive_rating"],
+                    "MGLT: " + output[i]["result"]["properties"]["MGLT"],
+                    "Cargo Capacity: " + output[i]["result"]["properties"]["cargo_capacity"],
+                    "Consumables: " + output[i]["result"]["properties"]["consumables"],
+                    "Pilot(s): " + output[i]["result"]["properties"]["pilots"]]);
             }
 
             // Sends data to pug view
@@ -58,6 +59,7 @@ exports.vehicles = function(req, res, next) {
         });
     }
     else {
+        console.log("ELSE");
         // Sends data to pug view
         res.render('lists', {
             title: 'Vehicles',

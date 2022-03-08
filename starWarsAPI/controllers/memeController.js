@@ -5,11 +5,9 @@ const { body, validationResult } = require("express-validator");
 var async = require("async");
 var SWMemes = require("../public/rndMeme").getInstance();
 
-// Stores meme data
-var memeData = [];
-var extraData = [];
-
 exports.meme = function (req, res) {
+  // Stores meme data
+  var memeData = [];
   var memeList = SWMemes.allMemes();
 
   if (memeData.length === 0)

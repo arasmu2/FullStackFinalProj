@@ -26,10 +26,8 @@ exports.createMeme = function (req, res) {
   fetch(url, { method: "POST" })
     .then((result) => result.json())
     .then((output) => {
-      res.render("index", {
-        quote: "None",
+      res.render("newMeme", {
         meme: output.data.url,
-        memeName: "None",
       });
     })
     .catch((err) => console.error(err));

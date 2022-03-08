@@ -1,0 +1,14 @@
+include includes/head.pug
+
+//- https://stackoverflow.com/questions/42529379/css-background-image-is-rendered-blurred-and-not-entirely/42529554
+body.bg-image(style="background-image: url('/images/pixabaybackgroundv4.png'); background-size: 100%;")
+  include includes/navbar.pug
+block content
+  h1.text-center.text-uppercase.mt-5.mb-5(id='main-header') Your Custom Star Wars Meme
+
+  div.container
+      div.d-flex.mt-5.justify-content-center
+        div.card.text-white.bg-secondary.text-center.border-warning(style='width: 60vw')
+          div.card-header.border-warning="I found your lack of memes disturbing.."
+          img.card-img-top.rnd-meme-img.border-warning(src=meme)
+          div.card-body

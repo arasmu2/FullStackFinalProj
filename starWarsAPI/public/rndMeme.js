@@ -96,13 +96,29 @@ class Memes {
     return captions;
   }
 
+  // In place array shuffle
+  // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+  // Used to randomize the oder memes are shown on the Meme page
+  shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+    }
+    return a;
+  }
+
+  // Returns a randomly selected meme template
   randomMeme() {
     var temp = Math.floor(Math.random() * this.memeList.length);
     return this.memeList[temp];
   }
 
+  // Returns a list of all memes
   allMemes() {
-    return this.memeList;
+    return this.shuffle(this.memeList);
   }
 }
 

@@ -6,15 +6,16 @@
         button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
       .modal-body
         img.img-center.meme-maker-img(src=val[2] alt='Star Wars Characters')
-        form(url="https://api.imgflip.com/caption_image" role='POST')
+        form(url="https://api.imgflip.com/caption_image" action="/memecreated" role='POST' name=val[0])
           div.form-group.mb-3
-            <label for="text0" class="col-form-label">Top Text:</label>
-            <input type="text" class="form-control" id="text0">
+            <label for="text0" class="col-form-label" id="text0">Top Text:</label>
+            <input name="text0" type="text" class="form-control" id="text0">
           div.form-group.mb-3
             <label for="text1" class="col-form-label">Bottom Text:</label>
-            <input type="text" class="form-control" id="text1">
+            <input name="text1" type="text" class="form-control" id="text1">
+            <input type="hidden" id="custId" name="image" value=#{val[0]}>
           .modal-footer.form-group
             button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
-            button.btn.btn-primary(type='submit' id='create-btn') Create
+            button.btn.btn-primary(type='submit' id='create-btn' value='Submit' onClick="handleSubmit(this.form)") Create
       
 //- https://stackoverflow.com/questions/59230116/how-to-get-modal-dialog-to-send-correct-object-in-pug-iteration

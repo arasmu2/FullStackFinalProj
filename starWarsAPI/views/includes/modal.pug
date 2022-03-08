@@ -11,13 +11,15 @@
         .card.bg-secondary
           if title === 'Characters'
             img.card-img-top.border-warning.character-img(src=val[1] alt='Star Wars Character')
-            .card-body 
-              p.card-text 
-                | #{extra[index].join("<br/>")} 
+            .card-body
+              each val in extra[index] 
+                p.card-text
+                  | #{val} 
           else 
-            .card-body 
-              p.card-text 
-                | #{extra[index]}
+            .card-body
+              each val in extra[index]
+                p.card-text 
+                  | #{val} 
       .modal-footer.border-warning
         button.btn.btn-light(type='button' data-bs-dismiss='modal') Close
 //- https://stackoverflow.com/questions/59230116/how-to-get-modal-dialog-to-send-correct-object-in-pug-iteration

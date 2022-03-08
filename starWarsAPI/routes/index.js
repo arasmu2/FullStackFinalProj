@@ -10,6 +10,7 @@ var starships_controller = require("../controllers/starshipsController");
 var vehicles_controller = require("../controllers/vehiclesController");
 var planets_controller = require("../controllers/planetsController");
 var meme_controller = require("../controllers/memeController");
+var meme_create_controller = require("../controllers/memeCreateController");
 
 // The routes for each page controller
 router.get("/", index_controller.index);
@@ -20,5 +21,6 @@ router.get("/starships", starships_controller.starships);
 router.get("/vehicles", vehicles_controller.vehicles);
 router.get("/planets", planets_controller.planets);
 router.get("/meme", meme_controller.meme);
+router.get("/memecreated", meme_create_controller.createMeme)
 
 module.exports = router;
